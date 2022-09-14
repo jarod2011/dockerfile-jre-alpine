@@ -1,4 +1,4 @@
-FROM alpine:3.10
+FROM alpine:3.16
 LABEL maintainer="xinghen249@gmail.com"
 
 ENV LANG=C.UTF-8 \
@@ -6,8 +6,8 @@ ENV LANG=C.UTF-8 \
     PATH=$PATH:/usr/lib/jvm/java-11-openjdk/jre/bin:/usr/lib/jvm/java-11-openjdk/bin \
     TZ=Asia/Shanghai
 RUN echo "" > /etc/apk/repositories \
-&& echo "https://mirrors.aliyun.com/alpine/v3.10/main/" >> /etc/apk/repositories \
-&& echo "https://mirrors.aliyun.com/alpine/v3.10/community/" >> /etc/apk/repositories \
+&& echo "https://mirrors.aliyun.com/alpine/v3.16/main/" >> /etc/apk/repositories \
+&& echo "https://mirrors.aliyun.com/alpine/v3.16/community/" >> /etc/apk/repositories \
 && apk update && apk add --no-cache openjdk11-jre-headless tzdata ttf-dejavu tini \
 && rm -rf /var/cache/apk/* \
 && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
